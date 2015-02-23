@@ -51,13 +51,14 @@ public abstract class AbstractController extends MethodAwareController implement
 			}
 
 			Map responseBodyMap;
+			if(t.getRequestURI().getPath().length()>subcontext.length()) {
+				String uriId = t.getRequestURI().getPath().substring(subcontext.length() + 1);
+				if (requestBodyMap == null) {
+					requestBodyMap = new HashMap();
+				}
 
-			String uriId = t.getRequestURI().getPath().substring(subcontext.length() + 1);
-			if(requestBodyMap == null) {
-				requestBodyMap = new HashMap();
+				requestBodyMap.put("uriId", uriId);
 			}
-
-			requestBodyMap.put("uriId",uriId);
 
 			switch (t.getRequestMethod()) {
 			case "POST":

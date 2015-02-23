@@ -32,6 +32,12 @@ $ mvn clean install dependency:copy-dependencies -DoutputDirectory=target/lib
 #### Start the web server:
 
 ```sh
-$ cd target
-$ java -jar seguim-server-webapp-example-1.0-SNAPSHOT.jar
+$ cd target/classes
+$ java -Dfile.encoding=UTF-8 -classpath ../lib/javax.mail-1.5.1.jar:../lib/activation-1.1.jar:../lib/jackson-databind-2.4.0.jar:../lib/jackson-annotations-2.4.0.jar:../lib/jackson-core-2.4.0.jar:../lib/jackson-dataformat-smile-2.4.0.jar:../lib/seguim-server-core-1.0-SNAPSHOT.jar:../lib/seguim-server-db-1.0-SNAPSHOT.jar:. com.seguim.example.Main
+```
+
+#### Test Call to the web server:
+
+```sh
+$ curl -i -H "Accept: application/json" http://localhost:8000/index
 ```

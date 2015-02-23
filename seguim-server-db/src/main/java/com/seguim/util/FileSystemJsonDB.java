@@ -23,6 +23,10 @@ public class FileSystemJsonDB implements JsonDB {
 
 	}
 	public FileSystemJsonDB(String _path) throws Exception {
+		if(_path==null) {
+			_path = System.getProperty("java.io.tmpdir");
+			System.out.println("path = " + _path);
+		}
 		File path = new File(_path);
 		if(!path.exists()) {
 			throw new Exception("Folder: [" + getPath() + "] doesn't exists.");
@@ -101,10 +105,6 @@ public class FileSystemJsonDB implements JsonDB {
 	}
 
 	public String getPath() {
-		if(path==null) {
-			path = System.getProperty("temp.directory");
-			System.out.println("path = " + path);
-		}
 		return path;
 	}
 

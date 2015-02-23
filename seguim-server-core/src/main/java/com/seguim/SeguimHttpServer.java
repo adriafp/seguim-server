@@ -32,7 +32,9 @@ public class SeguimHttpServer {
 
 		HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
 		List<Class> classList = AnnotationManager.getClassesWithAnnotation(packageToScanControllers, Controller.class);
-
+		
+		System.out.println("classList = " + classList);
+		
 		for(Class c : classList) {
 			Controller controller = (Controller) c.getAnnotation(Controller.class);
 			String mapping = controller.value();
