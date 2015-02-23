@@ -1,6 +1,6 @@
-package com.seguim.example;
+package com.seguim;
 
-import com.seguim.example.controllers.AbstractController;
+import com.seguim.controllers.AbstractController;
 import com.seguim.util.AnnotationManager;
 import com.seguim.util.PerformanceManager;
 import com.seguim.util.ServerProperties;

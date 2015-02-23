@@ -1,6 +1,6 @@
-package com.seguim.example.controllers;
+package com.seguim.controllers;
 
-import com.seguim.example.Constants;
+import com.seguim.Constants;
 import com.seguim.util.IOUtils;
 import com.sun.net.httpserver.HttpExchange;
 

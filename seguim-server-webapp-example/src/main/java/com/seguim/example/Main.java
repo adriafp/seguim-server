@@ -1,4 +1,6 @@
-import com.seguim.example.SeguimHttpServer;
+package com.seguim.example;
+
+import com.seguim.SeguimHttpServer;
 import com.seguim.util.PerformanceManager;
 
 /**

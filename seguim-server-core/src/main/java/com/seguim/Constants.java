@@ -1,4 +1,4 @@
-package com.seguim.example;
+package com.seguim;
 
 /**
  * Date: 12/02/15.

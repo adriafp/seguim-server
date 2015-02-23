@@ -1,6 +1,7 @@
 package com.seguim.example.controllers;
 
-import com.seguim.example.Controller;
+import com.seguim.Controller;
+import com.seguim.controllers.AbstractController;
 import com.seguim.example.domain.User;
 import com.seguim.example.services.UserService;
 import com.sun.net.httpserver.HttpExchange;

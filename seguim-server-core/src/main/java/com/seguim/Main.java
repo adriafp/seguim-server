@@ -1,4 +1,4 @@
-package com.seguim.example;
+package com.seguim;
 
 /**
  * Date: 11/12/14.
@@ -7,7 +7,7 @@ package com.seguim.example;
 public class Main {
 
 	public static void main(String[] args) throws Exception {
-		SeguimHttpServer.start(8000,"com.seguim.example.controllers");
+		SeguimHttpServer.start(8000,"com.seguim.controllers");
 	}
 
 }

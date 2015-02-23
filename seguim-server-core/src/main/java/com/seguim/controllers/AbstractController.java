@@ -1,7 +1,7 @@
-package com.seguim.example.controllers;
+package com.seguim.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.seguim.example.Controller;
+import com.seguim.Controller;
 import com.seguim.util.IOUtils;
 import com.seguim.util.PerformanceManager;
 import com.sun.net.httpserver.HttpExchange;
