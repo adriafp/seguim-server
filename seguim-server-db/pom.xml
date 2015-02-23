@@ -7,6 +7,7 @@
     <groupId>com.seguim</groupId>
     <artifactId>seguim-server-db</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>Seguim Server Database</name>
 
     <dependencies>
         <dependency>
