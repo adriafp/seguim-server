@@ -22,19 +22,24 @@ $ cd seguim-server
 $ mvn clean install
 ```
 
-#### Prepare the webapp (REST API) example:
-
-```sh
-$ cd seguim-server-webapp-example
-$ mvn clean install dependency:copy-dependencies -DoutputDirectory=target/lib
-```
-
 #### Start the web server:
 
 ```sh
-$ cd target/classes
-$ java -Dfile.encoding=UTF-8 -classpath ../lib/javax.mail-1.5.1.jar:../lib/activation-1.1.jar:../lib/jackson-databind-2.4.0.jar:../lib/jackson-annotations-2.4.0.jar:../lib/jackson-core-2.4.0.jar:../lib/jackson-dataformat-smile-2.4.0.jar:../lib/seguim-server-core-1.0-SNAPSHOT.jar:../lib/seguim-server-db-1.0-SNAPSHOT.jar:. com.seguim.example.Main
+$ cd seguim-server-webapp-example/target/classes
 ```
+
+Linux
+
+```sh
+$ sh startup.sh 
+```
+
+Windows
+
+```sh
+$ startup.bat 
+```
+
 
 #### Test Call to the web server:
 

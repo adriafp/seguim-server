@@ -1,0 +1,1 @@
+java -Dfile.encoding=UTF-8 -classpath ${libs}javax.mail-1.5.1.jar:${libs}activation-1.1.jar:${libs}jackson-databind-2.4.0.jar:${libs}jackson-annotations-2.4.0.jar:${libs}jackson-core-2.4.0.jar:${libs}jackson-dataformat-smile-2.4.0.jar:${libs}seguim-server-core-${seguim-server.version}.jar:${libs}seguim-server-db-${seguim-server.version}.jar:. com.seguim.example.Main
