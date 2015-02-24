@@ -8,7 +8,7 @@ import java.util.List;
  */
 public interface JsonDB {
 
-	public boolean saveOrUpdate(Object object, Class _class);
+	public int saveOrUpdate(Object object, Class _class);
 
 	public <T> T findBy(String key, String value, Class<T> _class);
 

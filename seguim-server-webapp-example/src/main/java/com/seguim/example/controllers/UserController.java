@@ -20,22 +20,33 @@ public class UserController extends AbstractController {
 
 	@Override
 	public Map post(Map data, HttpExchange t) {
+
+		Map<String, Object> map = new HashMap<>();
+		boolean result = false;
 		
-		Map userMap = (Map) data.get("user");
-		int id = (int) userMap.get("id");
-		String name = (String) userMap.get("name");
-		String surname = (String) userMap.get("surname");
-		String email = (String) userMap.get("email");
+		try {
+			int id = (int) (data.get("id") == null ? 0 : data.get("id"));
+			String name = (String) data.get("name");
+			String surname = (String) data.get("surname");
+			String email = (String) data.get("email");
+			if(name==null || surname == null || email ==null ) {
+				throw new Exception("Name, surname or email can not be null.");
+			}
+			User user = new User();
+			user.setId(id);
+			user.setName(name);
+			user.setSurname(surname);
 
-		User user = new User();
-		user.setId(id);
-		user.setName(name);
-		user.setSurname(surname);
-		user.setEmail(email);
-
-		boolean result = userService.saveOrUpdate(user);
-
-		Map<String, String> map = new HashMap<>();
+			user.setEmail(email);
+			id = userService.saveOrUpdate(user);
+			user.setId(id);
+			map.put("user", user);
+			result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			map.put("error", e.getMessage());
+		}
+		
 		map.put("success", Boolean.toString(result));
 		return map;
 	}

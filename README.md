@@ -41,8 +41,45 @@ $ startup.bat
 ```
 
 
-#### Test Call to the web server:
+#### Testing the API REST
+##### GET /index:
 
 ```sh
 $ curl -i -H "Accept: application/json" http://localhost:8000/index
+```
+
+Result:
+
+```
+HTTP/1.1 200 OK
+Content-length: 18
+Date: Tue, 24 Feb 2015 10:49:41 GMT
+{"Hello":"World!"}
+```
+
+##### POST /user:
+
+```sh
+$ curl -H "Content-Type: application/json" -d '{"name":"adria","surname":"febrer","email":"adria@seguim.com"}' http://localhost:8000/user
+```
+
+Result:
+
+```
+{"success":"true","user":{"id":2,"name":"adria","surname":"febrer","email":"adria@seguim.com"}}
+```
+
+##### GET /user/{id}:
+
+```sh
+$ curl -i -H "Accept: application/json" http://localhost:8000/user/1
+```
+
+Result
+
+```
+HTTP/1.1 200 OK
+Content-length: 78
+Date: Tue, 24 Feb 2015 10:52:44 GMT
+{"user":{"id":0,"name":"adria","surname":"febrer","email":"adria@seguim.com"}}
 ```

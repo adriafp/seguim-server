@@ -34,8 +34,8 @@ public class FileSystemJsonDB implements JsonDB {
 		setPath(_path);
 	}
 
-	public synchronized boolean saveOrUpdate(Object object, Class _class) {
-		boolean result = false;
+	public synchronized int saveOrUpdate(Object object, Class _class) {
+		int result = -1;
 		try {
 			File folder = new File(getPath(), _class.getName());
 			if(!folder.exists()) {
@@ -50,7 +50,7 @@ public class FileSystemJsonDB implements JsonDB {
 			String path = _class.getName()+"/"+id+".json";
 			File file = new File(getPath(), path);
 			objectMapper.writeValue(file, object);
-			result = true;
+			result = id;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

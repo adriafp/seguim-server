@@ -24,8 +24,8 @@ public class MemoryJsonDB implements JsonDB {
 	    memory = new TreeMap<String, Map>();
 	}
 
-	public synchronized boolean saveOrUpdate(Object object, Class _class) {
-		boolean result = false;
+	public synchronized int saveOrUpdate(Object object, Class _class) {
+		int result = -1;
 		try {
 			Map<Integer, byte[]> folder = memory.get(_class.getName());
 			if(folder == null) {
@@ -37,7 +37,7 @@ public class MemoryJsonDB implements JsonDB {
 				id = folder.size() + 1;
 			}
 			folder.put(id, objectMapper.writeValueAsBytes(object));
-			result = true;
+			result = id;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

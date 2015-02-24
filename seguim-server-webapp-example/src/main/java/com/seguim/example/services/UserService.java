@@ -21,7 +21,7 @@ public class UserService {
 		}
 	}
 
-	public boolean saveOrUpdate(User user) {
+	public int saveOrUpdate(User user) {
 		return jsonDB.saveOrUpdate(user, User.class);
 	}
 
