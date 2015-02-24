@@ -11,6 +11,7 @@ Seguim-Server is a project is about an http-server with a REST framework plus an
 * Jdk 1.7
 * Maven 2 or 3
 * Git
+* curl (for testing)
 
 ## Quick start
 
