@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.seguim.Controller;
 import com.seguim.util.IOUtils;
 import com.seguim.util.PerformanceManager;
+import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
@@ -64,6 +65,9 @@ public abstract class AbstractController extends MethodAwareController implement
 			case "POST":
 				responseBodyMap = post(requestBodyMap, t);
 				break;
+			case "OPTIONS":
+				responseBodyMap = options(requestBodyMap, t);
+				break;
 			case "PUT":
 				responseBodyMap = put(requestBodyMap, t);
 				break;
@@ -77,9 +81,14 @@ public abstract class AbstractController extends MethodAwareController implement
 
 			StringWriter stringWriter = new StringWriter();
 			objectMapper.writeValue(stringWriter, responseBodyMap);
-
+            Headers headers = t.getResponseHeaders();
+            headers.add("Access-Control-Allow-Origin", "*");
+            headers.add("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+            headers.add("Access-Control-Max-Age", "3600");
+            headers.add("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+            headers.add("Content-Type","application/json");
 			String response = stringWriter.toString();
-			t.sendResponseHeaders(HTTP_CODE_OK, response.length());
+			t.sendResponseHeaders(HTTP_CODE_OK, 0);
 
 			IOUtils.write(t.getResponseBody(), response);
 		}
@@ -106,6 +115,16 @@ public abstract class AbstractController extends MethodAwareController implement
 	 */
 	public Map post(Map data, HttpExchange t) {
 		requestMethodNotImplemented(t);
+		return null;
+	}
+
+	/**
+	 * This method is meant to be overridden.
+	 * @param data
+	 * @param t
+	 * @return
+	 */
+	public Map options(Map data, HttpExchange t) {
 		return null;
 	}
 

@@ -46,6 +46,7 @@ public class FileSystemJsonDB implements JsonDB {
 			int id = (Integer) object.getClass().getMethod("getId").invoke(object);
 			if(id<=0) {
 				id = folder.list().length + 1;
+				object.getClass().getMethod("setId", int.class).invoke(object, id);
 			}
 			String path = _class.getName()+"/"+id+".json";
 			File file = new File(getPath(), path);
@@ -59,13 +60,23 @@ public class FileSystemJsonDB implements JsonDB {
 
 	public synchronized <T> T findBy(String key, String value, Class<T> _class) {
 		try {
-			String path = FileSystemJsonDB.class.getResource(".").getPath()+_class.getName()+".json";
-			File file = new File(path);
+			File file = new File(getPath(), _class.getName());
+			System.out.println("file = " + file);
 
-			JsonNode jsonNode = objectMapper.readTree(file);
-			JsonNode node = jsonNode.findPath(key);
-			if(node.textValue().contains(value)) {
-				return objectMapper.readValue(file, _class);
+			if(file.isDirectory()) {
+				System.out.println("is Directory");
+				File[] jsons = file.listFiles();
+				if(jsons != null) {
+					for (File json : jsons) {
+						JsonNode jsonNode = objectMapper.readTree(json);
+						JsonNode node = jsonNode.findPath(key);
+						System.out.println("node = " + node);
+						if (node.textValue().contains(value)) {
+							System.out.println("contains");
+							return objectMapper.readValue(json, _class);
+						}
+					}
+				}
 			}
 
 		} catch (Exception e) {

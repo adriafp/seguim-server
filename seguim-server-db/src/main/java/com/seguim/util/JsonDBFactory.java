@@ -18,7 +18,10 @@ public class JsonDBFactory {
 		if(jsonDB==null) {
 
 			Properties properties = new Properties();
+			System.out.println(JsonDBFactory.class.getResource("/jsondb.properties"));
+			System.out.println(JsonDBFactory.class.getResource(""));
 			properties.load(JsonDBFactory.class.getResourceAsStream("/jsondb.properties"));
+			System.out.println("properties = " + properties);
 			String storeType = properties.getProperty("jsondb.storeType");
 			if(storeType.equals(STORE_TYPE_FILESYSTEM)) {
 				jsonDB = new FileSystemJsonDB(properties.getProperty("jsondb.filesystem.path"));
