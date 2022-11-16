@@ -1,6 +1,6 @@
 # Seguim-Server
 
-Seguim-Server is a project is about an http-server with a REST framework plus an object database. The purpose of this project is to allow developers to implement a very easy and light API Rest.
+Seguim-Server is a project is about a http-server with a REST framework plus an object database. The purpose of this project is to allow developers to implement a very easy and light API Rest.
 
   - Seguim-server-core: Is the core of the http-server.
   - Seguim-server-db: Is an object database. Persisted in binary json and can work in memory or persisted in files.
@@ -8,7 +8,7 @@ Seguim-Server is a project is about an http-server with a REST framework plus an
 
 ## Before start (Requirements)
 
-* Jdk 1.7
+* Jdk 1.17
 * Maven 2 or 3
 * Git
 * curl (for testing)
